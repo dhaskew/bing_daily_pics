@@ -41,6 +41,7 @@ enclosures.each do |file|
     puts "File Exists : #{file}"
   end
   
+  #test comment
   
 end
 
