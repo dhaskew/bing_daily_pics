@@ -1,0 +1,20 @@
+=== bing_daily_pics
+
+I wanted a way to help me download the Bing pics of the day from the homepage (bing.com).
+
+It relies on the following rss feed : http://feeds.feedburner.com/bingimages
+
+==== To get started
+
+gem install ruby-growl
+chmod +x bing_1.rb
+
+Edit the script to your liking
+
+./bing_1.rbt
+
+
+=== Notes
+
+* I've only test on Mac OSX Lion
+* I've only tested on ruby 1.9.2 p290
