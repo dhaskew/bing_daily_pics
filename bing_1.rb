@@ -2,6 +2,7 @@
 
 require 'rss'
 require 'open-uri'
+require 'logger'
 
 require 'ruby-growl'
 
@@ -11,6 +12,11 @@ require 'ruby-growl'
 # http://www.ruby-doc.org/core-1.9.3/String.html
 # http://www.ruby-doc.org/core-1.9.3/File.html
 
+
+@log = Logger.new(STDOUT)
+
+@log.level = Logger::DEBUG # DEBUG,INFO,WARN,ERROR,FATAL
+
 # alert on program start
 g1_result = `growl -H localhost -t "Bing Pic of the Day" -m "Refresh Started" -n "Ruby Script : Bing Picture of the Day"`
 
@@ -19,14 +25,21 @@ enclosures = []
 # the location to download the files to
 downloads_dir = "/Users/dhaskew/pictures/bing_pics/"
 
+#if(downloads_dir == "/Users/dhaskew/pictures/bing_pics/")
+#  @log.fatal "You must change the default download directory to something more appropriate!"
+#  exit 0
+#end
+
 # create directory if it doesn't exist
 if(!File.exists?(downloads_dir))
-  puts "directory doesn't exist"
-  puts "creating directory #{downloads_dir}"
-  Dir.mkdir(downloads_dir)
-  puts "directory created"
+  @log.fatal "The folder specified in downloads_dir does not exist! Please create and rerun script."
+  exit 0
+  #puts "creating directory #{downloads_dir}"
+  #Dir.mkdir(downloads_dir)
+  #puts "directory created"
 end
 
+@log.debug "RSS fetch and parse : START"
 
 url = 'http://feeds.feedburner.com/bingimages'
 open(url) do |rss|
@@ -39,6 +52,8 @@ open(url) do |rss|
     enclosures << item.enclosure.url
   end
 end
+
+@log.debug "RSS fetch and parse : END" 
 
 #puts enclosures
 
