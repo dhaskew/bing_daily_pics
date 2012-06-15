@@ -7,6 +7,7 @@ It relies on the following rss feed : http://feeds.feedburner.com/bingimages
 ==== To get started
 
 gem install ruby-growl
+gem install logger-colors
 chmod +x bing_1.rb
 
 Edit the script to your liking
