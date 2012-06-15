@@ -5,6 +5,7 @@ require 'open-uri'
 require 'logger'
 
 require 'ruby-growl'
+require 'logger/colors'
 
 # useful documentation
 # http://www.ruby-doc.org/stdlib-1.9.3/libdoc/rss/rdoc/RSS/Parser.html
