@@ -71,13 +71,14 @@ enclosures.each do |file|
   if(!File.exists?(fname))
   
     File.open(output_file, 'wb') do |fo|
-      fo.write open(file).read 
+      fo.write open(file).read
+      @log.info "File Created : #{output_file}"
     end
     
     new_pictures = true
     
   else
-    puts "File Exists : #{file}"
+    @log.info "File Exists : #{output_file}"
   end
   
   
