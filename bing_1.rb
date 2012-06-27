@@ -69,7 +69,7 @@ enclosures.each do |file|
   #puts fpart1
   #puts fname
   
-  if(!File.exists?(fname))
+  if(!File.exists?(output_file))
   
     File.open(output_file, 'wb') do |fo|
       fo.write open(file).read
