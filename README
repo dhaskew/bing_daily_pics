@@ -6,11 +6,11 @@ It relies on the following rss feed : http://feeds.feedburner.com/bingimages
 
 ==== To get started
 
-gem install ruby-growl
+gem install terminal-notifier
 gem install logger-colors
 chmod +x bing_1.rb
 
-Edit the script to your liking
+Edit the script to your liking to specify image download location
 
 ./bing_1.rb
 
@@ -18,4 +18,4 @@ Edit the script to your liking
 === Notes
 
 * I've only tested on Mac OSX Lion
-* I've only tested on ruby 1.9.2 p290
+* I've only tested on ruby 1.9.2 and 1.9.3
