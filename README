@@ -17,5 +17,5 @@ Edit the script to your liking to specify image download location
 
 === Notes
 
-* I've only tested on Mac OSX Lion
-* I've only tested on ruby 1.9.2 and 1.9.3
+* I've only tested on Mac OSX Mavericks 
+* Tested on ruby 2.0.0p451, but should work with 1.9.2 and 1.9.3.
