@@ -13,7 +13,6 @@ require 'terminal-notifier'  #gem install terminal-notifier
 # http://www.ruby-doc.org/core-1.9.3/String.html
 # http://www.ruby-doc.org/core-1.9.3/File.html
 
-
 @log = Logger.new(STDOUT)
 
 @log.level = Logger::DEBUG # DEBUG,INFO,WARN,ERROR,FATAL
@@ -25,7 +24,6 @@ enclosures = []
 
 # the location to download the files to
 downloads_dir = "/Users/dhaskew/pictures/bing_pics/"
-
 
 # create directory if it doesn't exist
 if(!File.exists?(downloads_dir))
@@ -44,7 +42,6 @@ open(url) do |rss|
 end
 
 @log.debug "RSS fetch and parse : END" 
-
 
 new_pictures = false
 
