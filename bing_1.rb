@@ -3,7 +3,6 @@
 require 'rss'
 require 'open-uri'
 require 'logger'
-
 require 'logger/colors'      #gem install logger-colors
 require 'terminal-notifier'  #gem install terminal-notifier
 
@@ -17,17 +16,30 @@ require 'terminal-notifier'  #gem install terminal-notifier
 
 @log.level = Logger::DEBUG # DEBUG,INFO,WARN,ERROR,FATAL
 
+#ensure environment is setup properly
+env_vars = %w{BING_DIR}
+
+not_defined = env_vars.find_all { |var| ENV[var] == nil }
+
+unless not_defined.empty?
+  @log.fatal "The following environment variables are missing and should be defined: #{not_defined.join(', ')}"
+  if (not_defined.include?('BING_DIR'))
+    @log.info "BING_DIR should point to the directory used to store the images.  It must exist and be of the form '/directory/subdir/'"
+  end
+  exit 0
+end
+
 # alert on program start
 TerminalNotifier.notify("Bing: Refresh Started", :activate => 'activate test', :title => "Bing Pic of the Day")
 
 enclosures = []
 
 # the location to download the files to
-downloads_dir = "/Users/dhaskew/pictures/bing_pics/"
+downloads_dir = ENV["BING_DIR"] # should be set to something like "/Users/username/Pictures/"
 
 # create directory if it doesn't exist
 if(!File.exists?(downloads_dir))
-  @log.fatal "The folder specified in downloads_dir does not exist! Please create and rerun script."
+  @log.fatal "The folder specified in BING_DIR (#{ENV["BING_DIR"]}) does not exist! Please create and rerun script."
   exit 0
 end
 
@@ -63,8 +75,6 @@ enclosures.each do |file|
   else
     @log.info "File Exists : #{output_file}"
   end
-  
-  
 end
 
 # alert on status of pictures
